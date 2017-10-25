@@ -5,6 +5,8 @@
 
 from base import BaseResource
 
+# add your source here
+
 sources = {
-    'sample': BaseResource('sample', 'id'),
+    'sample': BaseResource('sample', 'sid'),
 }

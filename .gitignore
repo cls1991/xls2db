@@ -102,3 +102,6 @@ ENV/
 
 # pycharm project settings
 .idea/
+
+# temporary files
+tmp/
