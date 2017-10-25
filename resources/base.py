@@ -4,7 +4,7 @@
     Base Data Source.
 """
 
-from . import models
+import model
 
 
 class BaseResource(object):
@@ -40,9 +40,20 @@ class BaseResource(object):
             if ix == self._header_index:
                 headers = dt.keys()
             elif ix >= self._content_index:
-                t = models[self._sheet_name].get(dt[self._unique_key])
-                if not t:
-                    t = models[self._sheet_name]()
+                m = model.models[self._sheet_name]
+                uk = dt[self._unique_key]
+                if isinstance(uk, float):
+                    uk = int(uk)
+                query = m.select().where(getattr(m, self._unique_key) == uk)
+                exist = query.exists()
+                if exist:
+                    t = query.get()
+                else:
+                    t = model.models[self._sheet_name]()
+                fs = m._meta.fields.keys()
                 for header in headers:
-                    t[header] = dt[header]
-                t.save()
+                    if header in fs:
+                        if header == self._unique_key and isinstance(dt[header], float):
+                            dt[header] = int(dt[header])
+                        exec ("t.%s=dt['%s']" % (header, header))
+                t.save(force_insert=not exist)

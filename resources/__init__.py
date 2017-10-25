@@ -3,14 +3,8 @@
 """ model-resource mappings.
 """
 
-from _base import BaseResource
-
-from model import models
+from base import BaseResource
 
 sources = {
     'sample': BaseResource('sample', 'id'),
-}
-
-models = {
-    'sample': models.SampleModel
 }
