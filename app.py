@@ -48,7 +48,6 @@ def upload():
                 with open(path, 'rb') as fs:
                     data_book = tablib.import_book(fs.read())
                     model.import_data(data_book)
-                    fs.close()
                     result = True
         else:
             errmsg = 'only xls, xlsx file allowed'

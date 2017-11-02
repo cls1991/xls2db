@@ -1,5 +1,5 @@
 # xls2db
-Export table data from excel to mysql database, in progress.
+Export table data from excel to mysql database, implemented with python.
 
 ## Examples
 
