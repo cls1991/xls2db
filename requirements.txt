@@ -3,7 +3,7 @@ et-xmlfile==1.0.1
 Flask==0.12.3
 itsdangerous==0.24
 jdcal==1.3
-Jinja2==2.9.6
+Jinja2==2.10.1
 MarkupSafe==1.0
 odfpy==1.3.5
 openpyxl==2.4.9
